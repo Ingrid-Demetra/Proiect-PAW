@@ -1,31 +1,41 @@
-public class ProfesorRepository
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Proiect
 {
-    public List<Profesor> GetAll()
+    public class ProfesorRepository
     {
-        return FakeDatabase.Profesori;
-    }
-
-    public void Add(Profesor profesor)
-    {
-        profesor.Id = FakeDatabase.Profesori.Count + 1;
-        FakeDatabase.Profesori.Add(profesor);
-    }
-
-    public void Update(Profesor profesor)
-    {
-        var existing = FakeDatabase.Profesori.FirstOrDefault(p => p.Id == profesor.Id);
-        if (existing != null)
+        public List<Profesor> GetAll()
         {
-            existing.Nume = profesor.Nume;
-            existing.Prenume = profesor.Prenume;
-            existing.Catedra = profesor.Catedra;
+            return FakeDatabase.Profesori;
         }
-    }
 
-    public void Delete(int id)
-    {
-        var profesor = FakeDatabase.Profesori.FirstOrDefault(p => p.Id == id);
-        if (profesor != null)
-            FakeDatabase.Profesori.Remove(profesor);
+        public void Add(Profesor profesor)
+        {
+            profesor.ID = FakeDatabase.Profesori.Count + 1;
+            FakeDatabase.Profesori.Add(profesor);
+        }
+
+        public void Update(Profesor profesor)
+        {
+            var existing = FakeDatabase.Profesori.FirstOrDefault(p => p.ID == profesor.ID);
+            if (existing != null)
+            {
+                existing.Nume = profesor.Nume;
+                existing.Prenume = profesor.Prenume;
+                existing.Catedra = profesor.Catedra;
+            }
+        }
+
+        public void Delete(int ID)
+        {
+            var profesor = FakeDatabase.Profesori.FirstOrDefault(p => p.ID == ID);
+            if (profesor != null)
+                FakeDatabase.Profesori.Remove(profesor);
+        }
     }
 }
