@@ -176,6 +176,7 @@
             this.btnStergeMaterie.TabIndex = 5;
             this.btnStergeMaterie.Text = "Sterge";
             this.btnStergeMaterie.UseVisualStyleBackColor = true;
+            this.btnStergeMaterie.Click += new System.EventHandler(this.btnStergeMaterie_Click);
             // 
             // btnEditeazaMaterie
             // 
@@ -185,6 +186,7 @@
             this.btnEditeazaMaterie.TabIndex = 4;
             this.btnEditeazaMaterie.Text = "Editeaza";
             this.btnEditeazaMaterie.UseVisualStyleBackColor = true;
+            this.btnEditeazaMaterie.Click += new System.EventHandler(this.btnEditeazaMaterie_Click);
             // 
             // btnAdaugaMaterie
             // 
@@ -194,6 +196,7 @@
             this.btnAdaugaMaterie.TabIndex = 3;
             this.btnAdaugaMaterie.Text = "Adauga";
             this.btnAdaugaMaterie.UseVisualStyleBackColor = true;
+            this.btnAdaugaMaterie.Click += new System.EventHandler(this.btnAdaugaMaterie_Click);
             // 
             // dgvMaterii
             // 
@@ -237,6 +240,7 @@
             this.btnStergeSala.TabIndex = 5;
             this.btnStergeSala.Text = "Sterge";
             this.btnStergeSala.UseVisualStyleBackColor = true;
+            this.btnStergeSala.Click += new System.EventHandler(this.btnStergeSala_Click);
             // 
             // btnEditeazaSala
             // 
@@ -246,6 +250,7 @@
             this.btnEditeazaSala.TabIndex = 4;
             this.btnEditeazaSala.Text = "Editeaza";
             this.btnEditeazaSala.UseVisualStyleBackColor = true;
+            this.btnEditeazaSala.Click += new System.EventHandler(this.btnEditeazaSala_Click);
             // 
             // btnAdaugaSala
             // 
@@ -255,6 +260,7 @@
             this.btnAdaugaSala.TabIndex = 3;
             this.btnAdaugaSala.Text = "Adauga";
             this.btnAdaugaSala.UseVisualStyleBackColor = true;
+            this.btnAdaugaSala.Click += new System.EventHandler(this.btnAdaugaSala_Click);
             // 
             // dgvSali
             // 

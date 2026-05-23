@@ -94,6 +94,7 @@
             this.btnSalveaza.TabIndex = 6;
             this.btnSalveaza.Text = "Salveaza";
             this.btnSalveaza.UseVisualStyleBackColor = true;
+            this.btnSalveaza.Click += new System.EventHandler(this.btnSalveaza_Click);
             // 
             // btnAnuleaza
             // 
@@ -103,6 +104,7 @@
             this.btnAnuleaza.TabIndex = 7;
             this.btnAnuleaza.Text = "Anuleaza";
             this.btnAnuleaza.UseVisualStyleBackColor = true;
+            this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
             // 
             // FormProfesor
             // 

@@ -10,7 +10,7 @@ namespace Proiect
     {
         public int ID { get; set; }
         public string Denumire { get; set; }
-        public string AnStudiu { get; set; }
+        public int AnStudiu { get; set; }
 
     }
 }
