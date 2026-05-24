@@ -15,5 +15,13 @@ namespace Proiect
         public string Zi { get; set; }
         public string OraInceput { get; set; }
         public string OraSfarsit { get; set; }
+
+        public Profesor Profesor { get; set; }
+        public Materie Materie { get; set; }
+        public Sala Sala { get; set; }
+
+        public string NumeProfesor => Profesor != null ? Profesor.Nume + " " + Profesor.Prenume : "";
+        public string NumeMaterie => Materie != null ? Materie.Denumire : "";
+        public string NumarSalaAfisare => Sala != null ? Sala.NumarSala.ToString() : "";
     }
 }

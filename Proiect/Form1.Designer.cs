@@ -304,6 +304,7 @@
             this.btnStergeOrar.TabIndex = 5;
             this.btnStergeOrar.Text = "Sterge";
             this.btnStergeOrar.UseVisualStyleBackColor = true;
+            this.btnStergeOrar.Click += new System.EventHandler(this.btnStergeOrar_Click);
             // 
             // btnEditeazaOrar
             // 
@@ -313,6 +314,7 @@
             this.btnEditeazaOrar.TabIndex = 4;
             this.btnEditeazaOrar.Text = "Editeaza";
             this.btnEditeazaOrar.UseVisualStyleBackColor = true;
+            this.btnEditeazaOrar.Click += new System.EventHandler(this.btnEditeazaOrar_Click);
             // 
             // btnAdaugaOrar
             // 
@@ -322,6 +324,7 @@
             this.btnAdaugaOrar.TabIndex = 3;
             this.btnAdaugaOrar.Text = "Adauga";
             this.btnAdaugaOrar.UseVisualStyleBackColor = true;
+            this.btnAdaugaOrar.Click += new System.EventHandler(this.btnAdaugaOrar_Click);
             // 
             // dgvOrar
             // 

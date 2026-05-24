@@ -53,6 +53,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormOraProgramata.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOraProgramata.Designer.cs">
+      <DependentUpon>FormOraProgramata.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMaterie.resx">
       <DependentUpon>FormMaterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOraProgramata.resx">
+      <DependentUpon>FormOraProgramata.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfesor.resx">
       <DependentUpon>FormProfesor.cs</DependentUpon>

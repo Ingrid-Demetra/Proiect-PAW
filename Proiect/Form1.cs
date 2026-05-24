@@ -15,12 +15,15 @@ namespace Proiect
         private ProfesorRepository _profesorRepo = new ProfesorRepository();
         private MaterieRepository _materieRepo = new MaterieRepository();
         private SalaRepository _salaRepo = new SalaRepository();
+        private OraProgramataRepository _oraRepo = new OraProgramataRepository();
+
         public Form1()
         {
             InitializeComponent();
             IncarcaProfesori();
             IncarcaMaterii();
             IncarcaSali();
+            IncarcaOre();
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -50,7 +53,7 @@ namespace Proiect
         {
             if (dgvProfesori.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati un profesor!");
+                MessageBox.Show("Selectati un profesor!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -70,13 +73,13 @@ namespace Proiect
         {
             if (dgvProfesori.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati un profesor!");
+                MessageBox.Show("Selectati un profesor!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             Profesor selectat = (Profesor)dgvProfesori.SelectedRows[0].DataBoundItem;
 
-            var confirmare = MessageBox.Show("Sigur stergi?", "Confirmare", MessageBoxButtons.YesNo);
+            var confirmare = MessageBox.Show("Sigur doriti sa stergeti?", "Confirmare stergere", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmare == DialogResult.Yes)
             {
                 _profesorRepo.Delete(selectat.ID);
@@ -104,7 +107,7 @@ namespace Proiect
         {
             if (dgvMaterii.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o materie!");
+                MessageBox.Show("Selectati o materie!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -124,7 +127,7 @@ namespace Proiect
         {
             if (dgvMaterii.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o materie!");
+                MessageBox.Show("Selectati o materie!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -158,7 +161,7 @@ namespace Proiect
         {
             if (dgvSali.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o sala!");
+                MessageBox.Show("Selectati o sala!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -178,17 +181,97 @@ namespace Proiect
         {
             if (dgvSali.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o sala!");
+                MessageBox.Show("Selectati o sala!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             Sala selectata = (Sala)dgvSali.SelectedRows[0].DataBoundItem;
 
-            var confirmare = MessageBox.Show("Sigur stergi?", "Confirmare", MessageBoxButtons.YesNo);
+            var confirmare = MessageBox.Show("Sigur doriti sa stergeti?", "Confirmare stergere", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirmare == DialogResult.Yes)
             {
                 _salaRepo.Delete(selectata.ID);
                 IncarcaSali();
+            }
+        }
+        private void IncarcaOre()
+        {
+            var ore = _oraRepo.GetAll();
+            var profesori = _profesorRepo.GetAll();
+            var materii = _materieRepo.GetAll();
+            var sali = _salaRepo.GetAll();
+
+            foreach (var ora in ore)
+            {
+                ora.Profesor = profesori.FirstOrDefault(p => p.ID == ora.ProfesorID);
+                ora.Materie = materii.FirstOrDefault(m => m.ID == ora.MaterieID);
+                ora.Sala = sali.FirstOrDefault(s => s.ID == ora.SalaID);
+            }
+
+            dgvOrar.DataSource = null;
+            dgvOrar.DataSource = ore;
+
+            dgvOrar.Columns["ID"].Visible = false;
+            dgvOrar.Columns["ProfesorID"].Visible = false;
+            dgvOrar.Columns["MaterieID"].Visible = false;
+            dgvOrar.Columns["SalaID"].Visible = false;
+            dgvOrar.Columns["Profesor"].Visible = false;
+            dgvOrar.Columns["Materie"].Visible = false;
+            dgvOrar.Columns["Sala"].Visible = false;
+
+            dgvOrar.Columns["NumeProfesor"].HeaderText = "Profesor";
+            dgvOrar.Columns["NumeMaterie"].HeaderText = "Materie";
+            dgvOrar.Columns["NumarSalaAfisare"].HeaderText = "Sala";
+
+        }
+
+        private void btnAdaugaOrar_Click(object sender, EventArgs e)
+        {
+            using (FormOraProgramata f = new FormOraProgramata(null))
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    _oraRepo.Add(f.OraModificata);
+                    IncarcaOre();
+                }
+            }
+        }
+
+        private void btnEditeazaOrar_Click(object sender, EventArgs e)
+        {
+            if (dgvOrar.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selectati o ora!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            OraProgramata selectata = (OraProgramata)dgvOrar.SelectedRows[0].DataBoundItem;
+
+            using (FormOraProgramata f = new FormOraProgramata(selectata))
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    _oraRepo.Update(f.OraModificata);
+                    IncarcaOre();
+                }
+            }
+        }
+
+        private void btnStergeOrar_Click(object sender, EventArgs e)
+        {
+            if (dgvOrar.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selectati o ora!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            OraProgramata selectata = (OraProgramata)dgvOrar.SelectedRows[0].DataBoundItem;
+
+            var confirmare = MessageBox.Show("Sigur doriti sa stergeti?", "Confirmare stergere", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmare == DialogResult.Yes)
+            {
+                _oraRepo.Delete(selectata.ID);
+                IncarcaOre();
             }
         }
     }
