@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
+
 
 namespace Proiect
 {
@@ -20,20 +23,21 @@ namespace Proiect
         public Form1()
         {
             InitializeComponent();
+            SeteazaStilDgv(dgvProfesori);
+            SeteazaStilDgv(dgvMaterii);
+            SeteazaStilDgv(dgvSali);
+            SeteazaStilDgv(dgvOrar);
             IncarcaProfesori();
             IncarcaMaterii();
             IncarcaSali();
             IncarcaOre();
         }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            IncarcaProfesori();
-        }
-
+        
         private void IncarcaProfesori()
         {
             dgvProfesori.DataSource = null;
             dgvProfesori.DataSource = _profesorRepo.GetAll();
+            dgvProfesori.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnAdaugaProfesor_Click(object sender, EventArgs e)
@@ -90,6 +94,7 @@ namespace Proiect
         {
             dgvMaterii.DataSource = null;
             dgvMaterii.DataSource = _materieRepo.GetAll();
+            dgvMaterii.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private void btnAdaugaMaterie_Click(object sender, EventArgs e)
         {
@@ -144,6 +149,7 @@ namespace Proiect
         {
             dgvSali.DataSource = null;
             dgvSali.DataSource = _salaRepo.GetAll();
+            dgvSali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         private void btnAdaugaSala_Click(object sender, EventArgs e)
         {
@@ -200,6 +206,7 @@ namespace Proiect
             var profesori = _profesorRepo.GetAll();
             var materii = _materieRepo.GetAll();
             var sali = _salaRepo.GetAll();
+            dgvOrar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             foreach (var ora in ore)
             {
@@ -207,6 +214,8 @@ namespace Proiect
                 ora.Materie = materii.FirstOrDefault(m => m.ID == ora.MaterieID);
                 ora.Sala = sali.FirstOrDefault(s => s.ID == ora.SalaID);
             }
+            var ordineSaptamana = new List<string> { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
+            ore = ore.OrderBy(o => ordineSaptamana.IndexOf(o.Zi)).ToList();
 
             dgvOrar.DataSource = null;
             dgvOrar.DataSource = ore;
@@ -241,7 +250,7 @@ namespace Proiect
         {
             if (dgvOrar.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o ora!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selectati un rand!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -261,7 +270,7 @@ namespace Proiect
         {
             if (dgvOrar.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selectati o ora!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selectati un rand!", "Atentie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -274,5 +283,127 @@ namespace Proiect
                 IncarcaOre();
             }
         }
+
+        private void printeazaOrarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += PrintOrar;
+
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            preview.Document = pd;
+            preview.ShowDialog();
+        }
+        private void PrintOrar(object sender, PrintPageEventArgs e)
+        {
+            var ore = _oraRepo.GetAll();
+            var profesori = _profesorRepo.GetAll();
+            var materii = _materieRepo.GetAll();
+            var sali = _salaRepo.GetAll();
+
+            foreach (var ora in ore)
+            {
+                ora.Profesor = profesori.FirstOrDefault(p => p.ID == ora.ProfesorID);
+                ora.Materie = materii.FirstOrDefault(m => m.ID == ora.MaterieID);
+                ora.Sala = sali.FirstOrDefault(s => s.ID == ora.SalaID);
+            }
+
+            var zile = new List<string> { "Luni", "Marti", "Miercuri", "Joi", "Vineri" };
+            var intervale = ore.Select(o => o.OraInceput + "-" + o.OraSfarsit).Distinct().OrderBy(x => x).ToList();
+
+            Font fontTitlu = new Font("Arial", 14, FontStyle.Bold);
+            Font fontHeader = new Font("Arial", 9, FontStyle.Bold);
+            Font fontDate = new Font("Arial", 8);
+
+            int startX = 40;
+            int startY = 40;
+            int latimeInterval = 80;
+            int latimeZi = 100;
+            int inaltimeLinie = 50;
+
+           
+            e.Graphics.DrawString("Orar Profesori", fontTitlu, Brushes.Black, startX, startY);
+            startY += 35;
+
+            
+            e.Graphics.FillRectangle(Brushes.SteelBlue, startX, startY, latimeInterval, inaltimeLinie);
+            e.Graphics.DrawString("Interval", fontHeader, Brushes.White, startX + 5, startY + 15);
+
+            for (int i = 0; i < zile.Count; i++)
+            {
+                int x = startX + latimeInterval + i * latimeZi;
+                e.Graphics.FillRectangle(Brushes.SteelBlue, x, startY, latimeZi, inaltimeLinie);
+                e.Graphics.DrawString(zile[i], fontHeader, Brushes.White, x + 25, startY + 15);
+            }
+
+            startY += inaltimeLinie;
+
+            
+            foreach (var interval in intervale)
+            {
+                
+                e.Graphics.DrawRectangle(Pens.Gray, startX, startY, latimeInterval, inaltimeLinie);
+                e.Graphics.DrawString(interval, fontHeader, Brushes.Black, startX + 5, startY + 15);
+
+              
+                for (int i = 0; i < zile.Count; i++)
+                {
+                    int x = startX + latimeInterval + i * latimeZi;
+                    e.Graphics.DrawRectangle(Pens.Gray, x, startY, latimeZi, inaltimeLinie);
+
+                    var ora = ore.FirstOrDefault(o => o.Zi == zile[i] &&
+                              o.OraInceput + "-" + o.OraSfarsit == interval);
+
+                    if (ora != null)
+                    {
+                        e.Graphics.DrawString(ora.NumeMaterie, fontDate, Brushes.Black, x + 3, startY + 5);
+                        e.Graphics.DrawString(ora.NumeProfesor, fontDate, Brushes.Black, x + 3, startY + 20);
+                        e.Graphics.DrawString("Sala " + ora.NumarSalaAfisare, fontDate, Brushes.Black, x + 3, startY + 35);
+                    }
+                }
+
+                startY += inaltimeLinie;
+            }
+        }
+
+        private void btnFiltreaza_Click(object sender, EventArgs e)
+        {
+            var ore = _oraRepo.GetAll();
+            var profesori = _profesorRepo.GetAll();
+            var materii = _materieRepo.GetAll();
+            var sali = _salaRepo.GetAll();
+
+            foreach (var ora in ore)
+            {
+                ora.Profesor = profesori.FirstOrDefault(p => p.ID == ora.ProfesorID);
+                ora.Materie = materii.FirstOrDefault(m => m.ID == ora.MaterieID);
+                ora.Sala = sali.FirstOrDefault(s => s.ID == ora.SalaID);
+            }
+
+            if (cmbFiltruZi.SelectedItem != null && cmbFiltruZi.SelectedItem.ToString() != "Toate")
+            {
+                ore = ore.Where(o => o.Zi == cmbFiltruZi.SelectedItem.ToString()).ToList();
+            }
+
+            dgvOrar.DataSource = null;
+            dgvOrar.DataSource = ore;
+
+            dgvOrar.Columns["ID"].Visible = false;
+            dgvOrar.Columns["ProfesorID"].Visible = false;
+            dgvOrar.Columns["MaterieID"].Visible = false;
+            dgvOrar.Columns["SalaID"].Visible = false;
+            dgvOrar.Columns["Profesor"].Visible = false;
+            dgvOrar.Columns["Materie"].Visible = false;
+            dgvOrar.Columns["Sala"].Visible = false;
+        }
+
+        private void SeteazaStilDgv(DataGridView dgv)
+        {
+            dgv.BackgroundColor = Color.White;
+            dgv.RowTemplate.Height = 30;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font(dgv.Font, FontStyle.Bold);
+        }
+
     }
 }

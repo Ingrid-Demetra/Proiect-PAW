@@ -14,9 +14,13 @@ namespace Proiect
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+           
+            //pt db:
+                AppDomain.CurrentDomain.SetData("DataDirectory", Application.StartupPath);
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+     
         }
     }
 }

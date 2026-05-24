@@ -31,13 +31,28 @@ namespace Proiect
 
         private void btnSalveaza_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNume.Text) ||
-                string.IsNullOrWhiteSpace(txtPrenume.Text) ||
-                string.IsNullOrWhiteSpace(txtCatedra.Text))
+            bool valid = true;
+            errorProvider.Clear();
+
+            if (string.IsNullOrWhiteSpace(txtNume.Text))
             {
-                MessageBox.Show("Completati toate campurile!");
-                return;
+                errorProvider.SetError(txtNume, "Numele este obligatoriu!");
+                valid = false;
             }
+
+            if (string.IsNullOrWhiteSpace(txtPrenume.Text))
+            {
+                errorProvider.SetError(txtPrenume, "Prenumele este obligatoriu!");
+                valid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCatedra.Text))
+            {
+                errorProvider.SetError(txtCatedra, "Catedra este obligatorie!");
+                valid = false;
+            }
+
+            if (!valid) return;
 
             ProfesorModificat = new Profesor
             {
@@ -50,7 +65,6 @@ namespace Proiect
             DialogResult = DialogResult.OK;
             Close();
         }
-
         private void btnAnuleaza_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

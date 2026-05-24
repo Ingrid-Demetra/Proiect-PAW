@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNume = new System.Windows.Forms.TextBox();
             this.txtPrenume = new System.Windows.Forms.TextBox();
             this.txtCatedra = new System.Windows.Forms.TextBox();
@@ -36,6 +37,8 @@
             this.lblCatedra = new System.Windows.Forms.Label();
             this.btnSalveaza = new System.Windows.Forms.Button();
             this.btnAnuleaza = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNume
@@ -88,9 +91,9 @@
             // 
             // btnSalveaza
             // 
-            this.btnSalveaza.Location = new System.Drawing.Point(564, 394);
+            this.btnSalveaza.Location = new System.Drawing.Point(533, 394);
             this.btnSalveaza.Name = "btnSalveaza";
-            this.btnSalveaza.Size = new System.Drawing.Size(75, 23);
+            this.btnSalveaza.Size = new System.Drawing.Size(120, 35);
             this.btnSalveaza.TabIndex = 6;
             this.btnSalveaza.Text = "Salveaza";
             this.btnSalveaza.UseVisualStyleBackColor = true;
@@ -100,11 +103,15 @@
             // 
             this.btnAnuleaza.Location = new System.Drawing.Point(669, 394);
             this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(75, 23);
+            this.btnAnuleaza.Size = new System.Drawing.Size(120, 35);
             this.btnAnuleaza.TabIndex = 7;
             this.btnAnuleaza.Text = "Anuleaza";
             this.btnAnuleaza.UseVisualStyleBackColor = true;
             this.btnAnuleaza.Click += new System.EventHandler(this.btnAnuleaza_Click);
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // FormProfesor
             // 
@@ -125,6 +132,7 @@
             this.Name = "FormProfesor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Profesor";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +148,6 @@
         private System.Windows.Forms.Label lblCatedra;
         private System.Windows.Forms.Button btnSalveaza;
         private System.Windows.Forms.Button btnAnuleaza;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

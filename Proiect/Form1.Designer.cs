@@ -49,10 +49,17 @@
             this.dgvSali = new System.Windows.Forms.DataGridView();
             this.tabOrar = new System.Windows.Forms.TabPage();
             this.PanelOrar = new System.Windows.Forms.Panel();
-            this.btnStergeOrar = new System.Windows.Forms.Button();
             this.btnEditeazaOrar = new System.Windows.Forms.Button();
             this.btnAdaugaOrar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnStergeOrar = new System.Windows.Forms.Button();
+            this.btnFiltreaza = new System.Windows.Forms.Button();
+            this.lblFiltru = new System.Windows.Forms.Label();
+            this.cmbFiltruZi = new System.Windows.Forms.ComboBox();
             this.dgvOrar = new System.Windows.Forms.DataGridView();
+            this.mni = new System.Windows.Forms.MenuStrip();
+            this.rapoarteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printeazaOrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl.SuspendLayout();
             this.tabProfesori.SuspendLayout();
             this.panelProfesori.SuspendLayout();
@@ -65,7 +72,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSali)).BeginInit();
             this.tabOrar.SuspendLayout();
             this.PanelOrar.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrar)).BeginInit();
+            this.mni.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -106,9 +115,9 @@
             // 
             // btnStergeProfesor
             // 
-            this.btnStergeProfesor.Location = new System.Drawing.Point(196, 12);
+            this.btnStergeProfesor.Location = new System.Drawing.Point(217, 7);
             this.btnStergeProfesor.Name = "btnStergeProfesor";
-            this.btnStergeProfesor.Size = new System.Drawing.Size(75, 23);
+            this.btnStergeProfesor.Size = new System.Drawing.Size(100, 30);
             this.btnStergeProfesor.TabIndex = 2;
             this.btnStergeProfesor.Text = "Sterge";
             this.btnStergeProfesor.UseVisualStyleBackColor = true;
@@ -116,9 +125,9 @@
             // 
             // btnEditeazaProfesor
             // 
-            this.btnEditeazaProfesor.Location = new System.Drawing.Point(104, 12);
+            this.btnEditeazaProfesor.Location = new System.Drawing.Point(111, 7);
             this.btnEditeazaProfesor.Name = "btnEditeazaProfesor";
-            this.btnEditeazaProfesor.Size = new System.Drawing.Size(75, 23);
+            this.btnEditeazaProfesor.Size = new System.Drawing.Size(100, 30);
             this.btnEditeazaProfesor.TabIndex = 1;
             this.btnEditeazaProfesor.Text = "Editeaza";
             this.btnEditeazaProfesor.UseVisualStyleBackColor = true;
@@ -126,9 +135,9 @@
             // 
             // btnAdaugaProfesor
             // 
-            this.btnAdaugaProfesor.Location = new System.Drawing.Point(10, 12);
+            this.btnAdaugaProfesor.Location = new System.Drawing.Point(5, 7);
             this.btnAdaugaProfesor.Name = "btnAdaugaProfesor";
-            this.btnAdaugaProfesor.Size = new System.Drawing.Size(75, 23);
+            this.btnAdaugaProfesor.Size = new System.Drawing.Size(100, 30);
             this.btnAdaugaProfesor.TabIndex = 0;
             this.btnAdaugaProfesor.Text = "Adauga";
             this.btnAdaugaProfesor.UseVisualStyleBackColor = true;
@@ -170,9 +179,9 @@
             // 
             // btnStergeMaterie
             // 
-            this.btnStergeMaterie.Location = new System.Drawing.Point(207, 12);
+            this.btnStergeMaterie.Location = new System.Drawing.Point(221, 7);
             this.btnStergeMaterie.Name = "btnStergeMaterie";
-            this.btnStergeMaterie.Size = new System.Drawing.Size(75, 23);
+            this.btnStergeMaterie.Size = new System.Drawing.Size(100, 30);
             this.btnStergeMaterie.TabIndex = 5;
             this.btnStergeMaterie.Text = "Sterge";
             this.btnStergeMaterie.UseVisualStyleBackColor = true;
@@ -180,9 +189,9 @@
             // 
             // btnEditeazaMaterie
             // 
-            this.btnEditeazaMaterie.Location = new System.Drawing.Point(115, 12);
+            this.btnEditeazaMaterie.Location = new System.Drawing.Point(115, 7);
             this.btnEditeazaMaterie.Name = "btnEditeazaMaterie";
-            this.btnEditeazaMaterie.Size = new System.Drawing.Size(75, 23);
+            this.btnEditeazaMaterie.Size = new System.Drawing.Size(100, 30);
             this.btnEditeazaMaterie.TabIndex = 4;
             this.btnEditeazaMaterie.Text = "Editeaza";
             this.btnEditeazaMaterie.UseVisualStyleBackColor = true;
@@ -190,9 +199,9 @@
             // 
             // btnAdaugaMaterie
             // 
-            this.btnAdaugaMaterie.Location = new System.Drawing.Point(21, 12);
+            this.btnAdaugaMaterie.Location = new System.Drawing.Point(9, 7);
             this.btnAdaugaMaterie.Name = "btnAdaugaMaterie";
-            this.btnAdaugaMaterie.Size = new System.Drawing.Size(75, 23);
+            this.btnAdaugaMaterie.Size = new System.Drawing.Size(100, 30);
             this.btnAdaugaMaterie.TabIndex = 3;
             this.btnAdaugaMaterie.Text = "Adauga";
             this.btnAdaugaMaterie.UseVisualStyleBackColor = true;
@@ -234,9 +243,9 @@
             // 
             // btnStergeSala
             // 
-            this.btnStergeSala.Location = new System.Drawing.Point(201, 12);
+            this.btnStergeSala.Location = new System.Drawing.Point(217, 7);
             this.btnStergeSala.Name = "btnStergeSala";
-            this.btnStergeSala.Size = new System.Drawing.Size(75, 23);
+            this.btnStergeSala.Size = new System.Drawing.Size(100, 30);
             this.btnStergeSala.TabIndex = 5;
             this.btnStergeSala.Text = "Sterge";
             this.btnStergeSala.UseVisualStyleBackColor = true;
@@ -244,9 +253,9 @@
             // 
             // btnEditeazaSala
             // 
-            this.btnEditeazaSala.Location = new System.Drawing.Point(109, 12);
+            this.btnEditeazaSala.Location = new System.Drawing.Point(111, 7);
             this.btnEditeazaSala.Name = "btnEditeazaSala";
-            this.btnEditeazaSala.Size = new System.Drawing.Size(75, 23);
+            this.btnEditeazaSala.Size = new System.Drawing.Size(100, 30);
             this.btnEditeazaSala.TabIndex = 4;
             this.btnEditeazaSala.Text = "Editeaza";
             this.btnEditeazaSala.UseVisualStyleBackColor = true;
@@ -254,9 +263,9 @@
             // 
             // btnAdaugaSala
             // 
-            this.btnAdaugaSala.Location = new System.Drawing.Point(15, 12);
+            this.btnAdaugaSala.Location = new System.Drawing.Point(5, 7);
             this.btnAdaugaSala.Name = "btnAdaugaSala";
-            this.btnAdaugaSala.Size = new System.Drawing.Size(75, 23);
+            this.btnAdaugaSala.Size = new System.Drawing.Size(100, 30);
             this.btnAdaugaSala.TabIndex = 3;
             this.btnAdaugaSala.Text = "Adauga";
             this.btnAdaugaSala.UseVisualStyleBackColor = true;
@@ -277,6 +286,7 @@
             // 
             this.tabOrar.Controls.Add(this.PanelOrar);
             this.tabOrar.Controls.Add(this.dgvOrar);
+            this.tabOrar.Controls.Add(this.mni);
             this.tabOrar.Location = new System.Drawing.Point(4, 25);
             this.tabOrar.Name = "tabOrar";
             this.tabOrar.Padding = new System.Windows.Forms.Padding(3);
@@ -287,30 +297,18 @@
             // 
             // PanelOrar
             // 
-            this.PanelOrar.Controls.Add(this.btnStergeOrar);
-            this.PanelOrar.Controls.Add(this.btnEditeazaOrar);
-            this.PanelOrar.Controls.Add(this.btnAdaugaOrar);
+            this.PanelOrar.Controls.Add(this.panel1);
             this.PanelOrar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.PanelOrar.Location = new System.Drawing.Point(3, 434);
             this.PanelOrar.Name = "PanelOrar";
             this.PanelOrar.Size = new System.Drawing.Size(878, 40);
             this.PanelOrar.TabIndex = 1;
             // 
-            // btnStergeOrar
-            // 
-            this.btnStergeOrar.Location = new System.Drawing.Point(196, 12);
-            this.btnStergeOrar.Name = "btnStergeOrar";
-            this.btnStergeOrar.Size = new System.Drawing.Size(75, 23);
-            this.btnStergeOrar.TabIndex = 5;
-            this.btnStergeOrar.Text = "Sterge";
-            this.btnStergeOrar.UseVisualStyleBackColor = true;
-            this.btnStergeOrar.Click += new System.EventHandler(this.btnStergeOrar_Click);
-            // 
             // btnEditeazaOrar
             // 
-            this.btnEditeazaOrar.Location = new System.Drawing.Point(104, 12);
+            this.btnEditeazaOrar.Location = new System.Drawing.Point(111, 7);
             this.btnEditeazaOrar.Name = "btnEditeazaOrar";
-            this.btnEditeazaOrar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditeazaOrar.Size = new System.Drawing.Size(100, 30);
             this.btnEditeazaOrar.TabIndex = 4;
             this.btnEditeazaOrar.Text = "Editeaza";
             this.btnEditeazaOrar.UseVisualStyleBackColor = true;
@@ -318,24 +316,111 @@
             // 
             // btnAdaugaOrar
             // 
-            this.btnAdaugaOrar.Location = new System.Drawing.Point(10, 12);
+            this.btnAdaugaOrar.Location = new System.Drawing.Point(5, 7);
             this.btnAdaugaOrar.Name = "btnAdaugaOrar";
-            this.btnAdaugaOrar.Size = new System.Drawing.Size(75, 23);
+            this.btnAdaugaOrar.Size = new System.Drawing.Size(100, 30);
             this.btnAdaugaOrar.TabIndex = 3;
             this.btnAdaugaOrar.Text = "Adauga";
             this.btnAdaugaOrar.UseVisualStyleBackColor = true;
             this.btnAdaugaOrar.Click += new System.EventHandler(this.btnAdaugaOrar_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnEditeazaOrar);
+            this.panel1.Controls.Add(this.btnStergeOrar);
+            this.panel1.Controls.Add(this.btnAdaugaOrar);
+            this.panel1.Controls.Add(this.btnFiltreaza);
+            this.panel1.Controls.Add(this.lblFiltru);
+            this.panel1.Controls.Add(this.cmbFiltruZi);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(878, 40);
+            this.panel1.TabIndex = 3;
+            // 
+            // btnStergeOrar
+            // 
+            this.btnStergeOrar.Location = new System.Drawing.Point(217, 7);
+            this.btnStergeOrar.Name = "btnStergeOrar";
+            this.btnStergeOrar.Size = new System.Drawing.Size(100, 30);
+            this.btnStergeOrar.TabIndex = 5;
+            this.btnStergeOrar.Text = "Sterge";
+            this.btnStergeOrar.UseVisualStyleBackColor = true;
+            this.btnStergeOrar.Click += new System.EventHandler(this.btnStergeOrar_Click);
+            // 
+            // btnFiltreaza
+            // 
+            this.btnFiltreaza.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFiltreaza.Location = new System.Drawing.Point(762, 6);
+            this.btnFiltreaza.Name = "btnFiltreaza";
+            this.btnFiltreaza.Size = new System.Drawing.Size(102, 23);
+            this.btnFiltreaza.TabIndex = 2;
+            this.btnFiltreaza.Text = "Filtreaza";
+            this.btnFiltreaza.UseVisualStyleBackColor = true;
+            this.btnFiltreaza.Click += new System.EventHandler(this.btnFiltreaza_Click);
+            // 
+            // lblFiltru
+            // 
+            this.lblFiltru.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFiltru.AutoSize = true;
+            this.lblFiltru.Location = new System.Drawing.Point(608, 9);
+            this.lblFiltru.Name = "lblFiltru";
+            this.lblFiltru.Size = new System.Drawing.Size(21, 16);
+            this.lblFiltru.TabIndex = 1;
+            this.lblFiltru.Text = "Zi:";
+            // 
+            // cmbFiltruZi
+            // 
+            this.cmbFiltruZi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbFiltruZi.FormattingEnabled = true;
+            this.cmbFiltruZi.Items.AddRange(new object[] {
+            "Toate",
+            "Luni",
+            "Marti",
+            "Miercuri",
+            "Joi",
+            "Vineri"});
+            this.cmbFiltruZi.Location = new System.Drawing.Point(635, 6);
+            this.cmbFiltruZi.Name = "cmbFiltruZi";
+            this.cmbFiltruZi.Size = new System.Drawing.Size(121, 24);
+            this.cmbFiltruZi.TabIndex = 0;
+            // 
             // dgvOrar
             // 
             this.dgvOrar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOrar.Location = new System.Drawing.Point(3, 3);
+            this.dgvOrar.Location = new System.Drawing.Point(3, 31);
             this.dgvOrar.Name = "dgvOrar";
             this.dgvOrar.RowHeadersWidth = 51;
             this.dgvOrar.RowTemplate.Height = 24;
-            this.dgvOrar.Size = new System.Drawing.Size(878, 471);
+            this.dgvOrar.Size = new System.Drawing.Size(878, 443);
             this.dgvOrar.TabIndex = 0;
+            // 
+            // mni
+            // 
+            this.mni.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mni.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rapoarteToolStripMenuItem});
+            this.mni.Location = new System.Drawing.Point(3, 3);
+            this.mni.Name = "mni";
+            this.mni.Size = new System.Drawing.Size(878, 28);
+            this.mni.TabIndex = 2;
+            this.mni.Text = "menuStrip1";
+            // 
+            // rapoarteToolStripMenuItem
+            // 
+            this.rapoarteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printeazaOrarToolStripMenuItem});
+            this.rapoarteToolStripMenuItem.Name = "rapoarteToolStripMenuItem";
+            this.rapoarteToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
+            this.rapoarteToolStripMenuItem.Text = "Optiuni";
+            // 
+            // printeazaOrarToolStripMenuItem
+            // 
+            this.printeazaOrarToolStripMenuItem.Name = "printeazaOrarToolStripMenuItem";
+            this.printeazaOrarToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.printeazaOrarToolStripMenuItem.Text = "Printeaza Orar";
+            this.printeazaOrarToolStripMenuItem.Click += new System.EventHandler(this.printeazaOrarToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -343,8 +428,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 506);
             this.Controls.Add(this.tabControl);
+            this.MainMenuStrip = this.mni;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Elaborare Orar";
             this.tabControl.ResumeLayout(false);
             this.tabProfesori.ResumeLayout(false);
             this.panelProfesori.ResumeLayout(false);
@@ -356,8 +442,13 @@
             this.panelSali.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSali)).EndInit();
             this.tabOrar.ResumeLayout(false);
+            this.tabOrar.PerformLayout();
             this.PanelOrar.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrar)).EndInit();
+            this.mni.ResumeLayout(false);
+            this.mni.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,6 +480,13 @@
         private System.Windows.Forms.Button btnStergeOrar;
         private System.Windows.Forms.Button btnEditeazaOrar;
         private System.Windows.Forms.Button btnAdaugaOrar;
+        private System.Windows.Forms.MenuStrip mni;
+        private System.Windows.Forms.ToolStripMenuItem rapoarteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printeazaOrarToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cmbFiltruZi;
+        private System.Windows.Forms.Button btnFiltreaza;
+        private System.Windows.Forms.Label lblFiltru;
     }
 }
 

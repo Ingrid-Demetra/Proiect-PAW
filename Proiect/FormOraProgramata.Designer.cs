@@ -117,9 +117,9 @@
             // 
             // btnSalveaza
             // 
-            this.btnSalveaza.Location = new System.Drawing.Point(550, 398);
+            this.btnSalveaza.Location = new System.Drawing.Point(523, 398);
             this.btnSalveaza.Name = "btnSalveaza";
-            this.btnSalveaza.Size = new System.Drawing.Size(75, 23);
+            this.btnSalveaza.Size = new System.Drawing.Size(120, 35);
             this.btnSalveaza.TabIndex = 8;
             this.btnSalveaza.Text = "Salveaza";
             this.btnSalveaza.UseVisualStyleBackColor = true;
@@ -129,7 +129,7 @@
             // 
             this.btnAnuleaza.Location = new System.Drawing.Point(663, 398);
             this.btnAnuleaza.Name = "btnAnuleaza";
-            this.btnAnuleaza.Size = new System.Drawing.Size(75, 23);
+            this.btnAnuleaza.Size = new System.Drawing.Size(120, 35);
             this.btnAnuleaza.TabIndex = 9;
             this.btnAnuleaza.Text = "Anuleaza";
             this.btnAnuleaza.UseVisualStyleBackColor = true;
